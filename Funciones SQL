@@ -1,0 +1,44 @@
+//SUMAR VARIABLES
+
+SET @num = 3;
+SET @otronum = 3;
+
+SELECT @num+@otronum;
+
+//RESTAR VARIABLES
+SET @num = 3;
+SET @otronum = 3;
+SELECT @num-@otronum;
+
+//MULTIPLICAR VARIABLES
+SET @num = 3;
+SET @otronum = 3;
+SELECT @num*@otronum;
+
+//DIVIDIR VARIABLES
+SET @num = 3;
+SET @otronum = 3;
+SELECT @num/@otronum;
+
+//RAIZ CUADRADA VARIABLES forma1
+SET @num = SQRT(4);
+SELECT @num
+
+//RAIZ CUADRADA VARIABLES forma2
+SET @num = 20;
+SELECT SQRT(@num);
+
+//RAIZ CUADRADA VARIABLES forma3
+SET @num = 20;
+SET @otronum = 20;
+SELECT SQRT(@otronum+@num);
+
+//POTENCIA VARIABLES
+SET @num = 20;
+SET @otronum = 20;
+SELECT POW(@otronum, @num);
+
+
+
+
+
