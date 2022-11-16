@@ -1,0 +1,110 @@
+//-------------PROCEDIMIENTOS---------------------
+
+
+//DECLARAR UN PROCEDIMIENTO
+
+DELIMITER $$
+CREATE PROCEDURE get_characters ()
+BEGIN
+	SELECT id_character,name 
+    FROM characters;
+
+END$$
+
+DELIMITER ; 
+ej: Esta funcion devuelve el nombre de todos los personajes.
+
+//LLAMAR UN PROCEDIMIENTO
+CALL "Nombre del Procedimiento"();
+ej: CALL get_characters();
+
+//BORRAR UN PROCEDIMIENTO
+DROP "Nombre del Procedimiento";
+ej: DROP get_characters;
+
+//DECLARAR PROCEDIMIENTO CON PARAMETROS
+
+DELIMITER $$
+CREATE PROCEDURE character_stats(id_character INT)
+BEGIN
+	SELECT * 
+    FROM characters
+    LEFT JOIN stats ON characters.id_character=stats.id_character
+    WHERE characters.id_character=id_character;
+
+END$$
+
+DELIMITER ; 
+ej: Esta funcion devuelve del id_character que tu pidas todas las stats que tiene.
+
+//LLAMAR UN PROCEDIMIENTO CON PARAMETRO
+CALL "Nombre del Procedimiento"("Numero del id en este caso del personaje que queramos");
+ej: CALL character_stats(2);
+
+//-------------FUNCIONES---------------------
+
+DELIMITER $$
+CREATE FUNCTION get_character_id (name VARCHAR(24)) RETURNS INT UNSIGNED
+BEGIN
+
+	DECLARE id INT UNSIGNED;
+    
+	SELECT characters.id_character INTO id
+    FROM characters
+    WHERE characters.name=name;
+    
+    RETURN id;
+    
+END$$
+
+DELIMITER ; 
+ej:Esta funcion coge el nombre de un personaje(lo pones como parametro)i te retorna la id del mismo
+
+//ESPECIFICAR QUE VA A RETORNAR
+
+RETURNS "Tipos de variable ej: si es FLOAT, VARCHAR etc..."
+ej:RETURNS INT UNSIGNED
+
+
+//DECLARAR VARIABLE
+
+DECLARE "nombre" "Tipos de variable ej: si es FLOAT, VARCHAR etc..."
+ej: DECLARE id INT UNSIGNED;
+
+
+//METER CONTENIDO DENTRO DE UNA VARIABLE
+
+Select ("Lo que quieras") INTO "variable que has creado"
+ej: SELECT characters.id_character INTO id
+
+//RETURN DE LA VARIABLE
+
+RETURN "variable";
+ej:RETURN id;
+
+//LLAMAR FUNCION
+SELECT "Funcion" ("Procedimiento") 
+ej: SELECT get_character_id ("Yulen") 
+    
+
+//Mezclar una funcion con un JOIN
+
+SELECT *
+
+FROM characters_weapons
+	LEFT JOIN weapons ON characters_weapons.id_weapon=weapons.id_weapons
+    WHERE characters_weapons.id_character=(SELECT get_character_id("Payoh"));
+
+ej: Esto coje la funcion que hemos creado i realaciona el id_character con las weapons i sale la weapon i sus stats
+
+
+
+
+
+
+
+
+
+
+
+
