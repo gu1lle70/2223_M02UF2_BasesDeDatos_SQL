@@ -1,0 +1,25 @@
+ENVIAR ARCHIVO DE MAQUINA A OTRA
+scp "archivo .sql con todos los comandos" hostname@ip:"ruta donde quieras que acabe
+
+MARIA DB LINEA DE COMANDOS:
+Para importar la base de datos: cat "archivo .sql con todos los comandos" | mysql "nombre database"
+
+IMPORTANTE DESPUES DE CADA SENTENCIA VA UN ';'
+
+-create user 'Nombre de usuario'@'localhost'IDENTIFIED BY 'Nombre de usuario';
+
+-mysql---- para entrar en la base de datos
+
+-mysql -u(User) "Nombre de usuario"---- para entrar en la base de datos con cierto usuario
+
+-mysql -u(User) "Nombre de usuario" -p(Password) ----- para entrar en la base de datos con cierto usuario i contraseña 
+
+-use "database" ---- para entrar dentro de la database (utilizarla)
+
+-show tables----- enseña las tablas de las databases
+
+-exit para salir de mysql
+
+
+
+
